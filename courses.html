@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses | SCIT</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            margin: 0; padding: 0; 
+            background: #ffffff; 
+            color: #4a0404; 
+            position: relative;
+        }
+
+        /* Logo ko Page ke background me watermark banane ke liye */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px; /* Aap apne hisab se size bada-chota kar sakte hain */
+            height: 400px;
+            background: url('LOGO.jpg') no-repeat center center;
+            background-size: contain;
+            opacity: 0.08; /* Isse logo ekdam halka background me dikhega */
+            z-index: -1; /* Ye content ke peeche rahega */
+        }
+        
+        /* Header without Name & Logo */
+        header { 
+            text-align: center; 
+            padding: 20px 0; 
+            background: transparent;
+        }
+
+        /* White Glass Menu Bar */
+        nav { 
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(10px); 
+            display: flex; justify-content: center; 
+            position: sticky; top: 0; z-index: 1000; 
+            border-bottom: 2px solid #4a0404; 
+        }
+        nav a { 
+            color: #4a0404; 
+            text-decoration: none; 
+            padding: 12px 25px; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            transition: 0.3s; 
+        }
+        nav a:hover { background: rgba(74, 4, 4, 0.1); }
+
+        /* Small Letter Content Section */
+        .content-section { 
+            max-width: 900px; 
+            margin: 30px auto; 
+            padding: 0 20px; 
+        }
+        .content-section h2 { 
+            font-size: 1.8rem; 
+            text-align: center;
+            margin-bottom: 15px; 
+            text-transform: uppercase; 
+        }
+        .small-content { 
+            line-height: 1.6; 
+            font-size: 14px; /* Small Letter Size */
+            text-align: justify; 
+            font-weight: 400;
+            background: rgba(253, 242, 242, 0.8); /* Thoda transparent */
+            padding: 20px; 
+            border-radius: 8px; 
+            border-left: 5px solid #4a0404;
+        }
+
+        /* Glass Design Table */
+        .table-container { max-width: 900px; margin: 30px auto; padding: 0 20px; overflow-x: auto; }
+        table { 
+            width: 100%; border-collapse: collapse; 
+            background: rgba(255, 255, 255, 0.5); /* Glass effect */
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(74, 4, 4, 0.2);
+            border-radius: 12px; overflow: hidden;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+        }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(74, 4, 4, 0.1); }
+        th { background: #4a0404; color: white; text-transform: uppercase; font-size: 0.85rem; }
+        td { font-size: 0.95rem; }
+        tr:hover { background: rgba(74, 4, 4, 0.05); }
+
+        /* Footer with your specific lines */
+        footer { 
+            background: #4a0404; 
+            color: white; 
+            text-align: center; 
+            padding: 20px; 
+            margin-top: 40px; 
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            nav a { padding: 10px 12px; font-size: 0.75rem; }
+            body::before { width: 250px; height: 250px; } /* Mobile me logo ka size chota */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        </header>
+
+    <nav>
+    <a href="index.html">HOME</a> 
+    <a href="courses.html">COURSE</a>
+    <a href="certificate.html">CERTIFICATE</a>
+    <a href="media.html">MEDIA</a>
+    <a href="contact.html">CONTACT</a>
+</nav>
+
+    <div class="content-section">
+        <h2>Our Training Approach</h2>
+        <div class="small-content">
+            Our courses are meticulously designed to bridge the gap between academic learning and industry requirements. 
+            We provide a robust technical foundation that empowers students to master complex digital tools with ease. 
+            Every module is focused on practical excellence, ensuring you gain hands-on experience in real-world scenarios. 
+            Our expert-led training simplifies advanced concepts, making you career-ready for the global IT market. 
+            We maintain high standards of certification that are recognized across both private and government sectors. 
+            With state-of-the-art lab facilities, we ensure that your learning journey is smooth, modern, and highly effective. 
+            Investing in our courses means securing your future with the most in-demand technical skills of the 21st century.
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Duration</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ADCA</strong> (Advance Diploma in Computer Applications)</td>
+                    <td>12 Months</td>
+                    <td>₹ 8,000</td>
+                </tr>
+                <tr>
+                    <td><strong>PGDCA</strong> (Post Graduate Diploma in Computer Applications)</td>
+                    <td>12 Months</td>
+                    <td>₹ 6,600</td>
+                </tr>
+                <tr>
+                    <td><strong>DCA</strong> (Diploma in Computer Applications)</td>
+                    <td>6 Months</td>
+                    <td>₹ 4,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Tally Prime</strong> (Professional Accounting)</td>
+                    <td>3 Months</td>
+                    <td>₹ 5,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        &copy; 2026 Samant Chandra Sekhar Information and Technology. All Rights Reserved. <br>
+        Building Careers through Quality Technical Education
+    </footer>
+
+</body>
+</html>
