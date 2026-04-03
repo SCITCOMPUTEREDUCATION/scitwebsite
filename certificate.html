@@ -76,7 +76,7 @@
             <h2 style="text-transform: uppercase; margin-top: 0;">Online Verification</h2>
             <p>Enter Certificate Number to check student details:</p>
             
-            <input type="text" id="certNo" placeholder="Enter certificate no (e.g. SCIT/1001)"> <br>
+            <input type="text" id="certNo" placeholder="Enter certificate no (e.g. SCIT/courses/1001)"> <br>
             <button class="btn-verify" onclick="checkCertificate()">Verify Now</button>
 
             <div id="result"></div>
@@ -92,7 +92,7 @@
         const resultDiv = document.getElementById("result");
         
         if (input === "") {
-            alert("Please enter a Registration Number!");
+            alert("Please enter a Cerificate Number!");
             return;
         }
 
