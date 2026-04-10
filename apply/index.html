@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCIT Computer Education</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #eef2f5; }
+        .container { background: white; width: 100%; max-width: 450px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); text-align: center; overflow: hidden; padding-bottom: 30px; }
+        .ad-poster { width: 100%; height: auto; display: block; }
+        .content-area { padding: 20px; }
+        h1 { color: #2c3e50; font-size: 24px; margin: 10px 0; }
+        /* Professional Button Style */
+        .apply-btn { 
+            background-color: #25D366; color: white; padding: 18px 40px; 
+            text-decoration: none; font-weight: bold; font-size: 18px; 
+            border-radius: 50px; display: inline-block; cursor: pointer;
+            border: none; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="scit-poster.png" alt="SCIT Poster" class="ad-poster">
+    
+    <div class="content-area">
+        <h1>SCIT ODISHA</h1>
+        <p>Expert-led computer courses. Join DCA, PGDCA & Tally.</p>
+
+        <button onclick="openWhatsApp()" class="apply-btn">
+            Apply Now via WhatsApp
+        </button>
+    </div>
+</div>
+
+<script>
+    function openWhatsApp() {
+        // Aapka number aur message
+        var phoneNumber = "919853330750";
+        var message = "I want to join SCIT courses. Please share admission details.";
+        
+        // Isse browser ko force karenge ki wo WhatsApp app khole
+        var url = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + encodeURIComponent(message);
+        
+        window.location.href = url;
+    }
+</script>
+
+</body>
+</html>
