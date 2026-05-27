@@ -15,7 +15,7 @@
         body::before {
             content: ""; position: fixed; top: 50%; left: 50%;
             transform: translate(-50%, -50%); width: 450px; height: 450px;
-            background: url('logo.jpg') no-repeat center center;
+            background: url('LOGO.jpg') no-repeat center center;
             background-size: contain; opacity: 0.05; z-index: -1;
         }
 
@@ -37,7 +37,7 @@
         }
 
         input[type="text"] {
-            width: 20%; padding: 10px; font-size: 1rem; border: 2px solid #4a0404;
+            width: 80%; padding: 12px; font-size: 1.1rem; border: 2px solid #4a0404;
             border-radius: 8px; margin-bottom: 20px; text-align: center; font-weight: bold;
         }
 
@@ -64,77 +64,70 @@
 <body>
 
     <nav>
-    <a href="index.html">HOME</a> 
-    <a href="courses.html">COURSE</a>
-    <a href="certificate.html">CERTIFICATE</a>
-    <a href="media.html">MEDIA</a>
-    <a href="contact.html">CONTACT</a>
-</nav>
+        <a href="scit1.html">HOME</a>
+        <a href="courses.html">COURSE</a>
+        <a href="certificate.html">CERTIFICATE</a>
+        <a href="media.html">MEDIA</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
 
     <div class="container">
         <div class="verify-card">
             <h2 style="text-transform: uppercase; margin-top: 0;">Online Verification</h2>
             <p>Enter Certificate Number to check student details:</p>
             
-            <input type="text" id="certNo" placeholder="Enter certificate no (e.g. SCIT/courses/1001)">
+            <input type="text" id="certNo" placeholder="Enter Reg. No (e.g. SCIT/1001)"> <br>
             <button class="btn-verify" onclick="checkCertificate()">Verify Now</button>
 
             <div id="result"></div>
         </div>
     </div>
 
-   <script>
-    // --- YAHAN APNA GOOGLE SHEET CSV LINK DALIE ---
-    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9zIi7L843P-vODgmS0y7Iy9fygN5vpnqxiOD2U8X9hOGuc7aBPVC9id-jc1khsPOXgg2cluIB-YVF/pub?output=csv"; 
+    <script>
+        // --- STUDENT DATABASE (Yahan aap aur students add kar sakte hain) ---
+        const studentData = {
+            "SCIT/1000": { name: "RAHUL KUMAR", course: "ADCA", percentage: "85%", grade: "A+" },
+            "SCIT/1001": { name: "PRIYA DASH", course: "DCA", percentage: "78%", grade: "A" },
+            "SCIT/1002": { name: "MANAS SWAIN", course: "TALLY PRIME", percentage: "92%", grade: "O" }
+        };
 
-    async function checkCertificate() {
-        const input = document.getElementById("certNo").value.trim().toUpperCase();
-        const resultDiv = document.getElementById("result");
-        
-        if (input === "") {
-            alert("Please enter a Cerificate Number!");
-            return;
-        }
+        function checkCertificate() {
+            const certNumber = document.getElementById("certNo").value.trim().toUpperCase();
+            const resultDiv = document.getElementById("result");
 
-        resultDiv.style.display = "block";
-        resultDiv.innerHTML = "<p style='text-align:center;'>Searching Database...</p>";
+            if (certNumber === "") {
+                alert("Please enter a certificate number!");
+                return;
+            }
 
-        try {
-            const response = await fetch(sheetURL);
-            const data = await response.text();
-            
-            // CSV data ko rows mein convert karna
-            const rows = data.split("\n").map(row => row.split(","));
-            
-            // Student dhoondhna (Pehla Column = Reg No)
-            const student = rows.find(r => r[0].trim().toUpperCase() === input);
+            resultDiv.style.display = "block";
 
-            if (student) {
+            // Check if student exists in our list
+            if (studentData[certNumber]) {
+                const student = studentData[certNumber];
                 resultDiv.innerHTML = `
                     <div class="status-box valid">
                         <h3 style="margin:0; text-align:center;">✅ VERIFIED & VALID</h3>
                         <table class="data-table">
-                            <tr><td class="label">Student Name</td><td>${student[1]}</td></tr>
-                            <tr><td class="label">Certificate Number</td><td>${student[0]}</td></tr>
-                            <tr><td class="label">Course Name</td><td>${student[2]}</td></tr>
-                            <tr><td class="label">Percentage</td><td>${student[3]}</td></tr>
-                            <tr><td class="label">Final Grade</td><td>${student[4]}</td></tr>
+                            <tr><td class="label">Student Name</td><td>${student.name}</td></tr>
+                            <tr><td class="label">Certificate No</td><td>${certNumber}</td></tr>
+                            <tr><td class="label">Course Name</td><td>${student.course}</td></tr>
+                            <tr><td class="label">Percentage</td><td>${student.percentage}</td></tr>
+                            <tr><td class="label">Final Grade</td><td>${student.grade}</td></tr>
                         </table>
+                        <p style="text-align:center; font-size: 0.8rem; margin-top: 10px;">This is an electronically generated status from SCIT Database.</p>
                     </div>
                 `;
             } else {
                 resultDiv.innerHTML = `
                     <div class="status-box invalid">
                         <h3 style="margin:0; text-align:center;">❌ NOT FOUND</h3>
-                        <p style="text-align:center;">Certificate Number <b>${input}</b> record mein nahi mila.</p>
+                        <p style="text-align:center;">The Certificate Number <b>${certNumber}</b> does not exist in our records. Please contact SCIT Head Office.</p>
                     </div>
                 `;
             }
-        } catch (error) {
-            resultDiv.innerHTML = "<p style='color:red;'>Error connecting to Database. Please check your internet.</p>";
         }
-    }
-</script>
+    </script>
 
     <footer>
         © 2026 Samant Chandra Sekhar Information and Technology. All Rights Reserved. <br>
