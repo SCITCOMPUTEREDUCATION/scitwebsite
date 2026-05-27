@@ -1,4 +1,4 @@
-html
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,9 +17,10 @@ html
             display:flex;
             flex-direction:column;
             min-height:100vh;
+            position:relative;
         }
 
-        /* Watermark */
+        /* WATERMARK LOGO */
 
         body::before{
             content:"";
@@ -29,10 +30,13 @@ html
             transform:translate(-50%,-50%);
             width:450px;
             height:450px;
-            background:url('logo.jpg') no-repeat center center;
+            background-image:url('logo.jpg');
+            background-repeat:no-repeat;
+            background-position:center;
             background-size:contain;
-            opacity:0.05;
-            z-index:-1;
+            opacity:0.06;
+            z-index:0;
+            pointer-events:none;
         }
 
         nav{
@@ -61,6 +65,8 @@ html
             margin:40px auto;
             padding:0 20px;
             text-align:center;
+            position:relative;
+            z-index:1;
         }
 
         .verify-card{
@@ -74,14 +80,15 @@ html
 
         input[type="text"]{
             width:100%;
-            max-width:450px;
+            max-width:550px;
             padding:12px;
-            font-size:1rem;
+            font-size:0.95rem;
             border:2px solid #4a0404;
             border-radius:8px;
             margin-bottom:20px;
             text-align:center;
             font-weight:bold;
+            box-sizing:border-box;
         }
 
         .btn-verify{
@@ -166,6 +173,8 @@ html
             text-align:center;
             padding:25px 20px;
             margin-top:auto;
+            position:relative;
+            z-index:1;
         }
 
         @media(max-width:768px){
@@ -202,11 +211,12 @@ html
                 Enter Certificate Number to check student details:
             </p>
 
-           <input
-    type="text"
-    id="certNo"
-    placeholder="Enter Certificate No. (e.g. SCIT/COURSE/1000)"
->
+            <input
+                type="text"
+                id="certNo"
+                placeholder="Enter Certificate No. (e.g. SCIT/COURSE/1000)"
+            >
+
             <br>
 
             <button class="btn-verify" onclick="checkCertificate()">
@@ -220,8 +230,6 @@ html
     </div>
 
     <script>
-
-        /* GOOGLE SHEET CSV LINK */
 
         const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9zIi7L843P-vODgmS0y7Iy9fygN5vpnqxiOD2U8X9hOGuc7aBPVC9id-jc1khsPOXgg2cluIB-YVF/pub?output=csv";
 
@@ -403,3 +411,4 @@ html
 
 </body>
 </html>
+```
